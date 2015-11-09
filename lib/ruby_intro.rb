@@ -38,8 +38,7 @@ end
 # Part 2
 
 def hello(name)
-  helloname = "Hello, ".concat(name)
-  return helloname
+  return "Hello, " + name
 end
 
 def starts_with_consonant? s
@@ -47,12 +46,14 @@ def starts_with_consonant? s
   if s.size == 0 
     return false
   end
-  #if s[0] == 0
-  
+  if s2 =~ /^[aeiou\W].*/
+    return false
+  end
+  return true
 end
 
 def binary_multiple_of_4? s
-  if s.respond_to?(:to_i)
+  if s =~ /^[01]+/
     if s.to_i(2) % 4 == 0
       return true
     end
@@ -75,6 +76,6 @@ class BookInStock
   attr_accessor :price
   
   def price_as_string
-    "$" + @price.to_s
+    "$" + ("%.2f" % @price)
   end
 end
